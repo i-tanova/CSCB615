@@ -52,12 +52,17 @@
 						<c:param name="command" value="LOAD" />
 						<c:param name="id" value="${temp.language.id}" />
 					</c:url>
+					
+					<c:url var="openPageTypeLink" value="PageTypesControllerServlet">
+						<c:param name="command" value="LOAD" />
+						<c:param name="id" value="${temp.pageType.id}" />
+					</c:url>
 
 					<tr>
 						<td>${temp.name}</td>
 						<td>${temp.theme}</td>
 						<td><a href="${openLanguageLink}">${temp.language.name}</a></td>
-						<td><a href="${updateLink}">${temp.pageType.name}</a></td>
+						<td><a href="${openPageTypeLink}">${temp.pageType.name}</a></td>
 						<td>${temp.date}</td>
 						<td><a href="${updateLink}">Update</a> | <a
 							onclick="if(!(confirm('Are you shure?'))) return false"
@@ -74,6 +79,7 @@
 	<p>
 
 		<a href="LanguagesControllerServlet">Languages</a>
+		<a href="PageTypesControllerServlet">Page Types</a>
 	</p>
 
 </body>

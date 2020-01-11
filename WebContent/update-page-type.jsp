@@ -11,27 +11,27 @@
 <body>
 	<div id="wrapper">
 		<div id="header">
-			<h2>Update Language</h2>
+			<h2>Update Page Type</h2>
 		</div>
 	</div>
 
 	<div id="container">
 
 		<div id="content">
-			<form action="LanguagesControllerServlet" method="get">
+			<form action="PageTypesControllerServlet" method="get">
 				<input type="hidden" name="command" value="UPDATE" />
-				<input type="hidden" name="id" value="${language.id}" />
+				<input type="hidden" name="id" value="${pageType.id}" />
 				
 				<table>
 					<tbody>
 						<tr>
 							<td><label>Name:</label></td>
-							<td><input type="text" name="name" value="${language.name}"></td>
+							<td><input type="text" name="name" value="${pageType.name}"></td>
 						</tr>
 
 						<tr>
-							<td><label>Acronym:</label></td>
-							<td><input type="text" name="acronym" value="${language.acronym}"></td>
+							<td><label>Metadata:</label></td>
+							<td><input type="text" name="metadata" value="${pageType.metadata}"></td>
 						</tr>
 
 						<tr>
@@ -47,7 +47,7 @@
 			<div style="clear: both;"></div>
 			<p>
 
-				<a href="LanguagesControllerServlet">Back</a>
+				<a href="PageTypesControllerServlet">Back</a>
 			</p>
 		</div>
 

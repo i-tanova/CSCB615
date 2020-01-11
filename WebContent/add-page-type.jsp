@@ -7,16 +7,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add Language</title>
+<title>Add Page Type</title>
 <link type="text/css" rel="stylesheet" href="css/style.css"></link>
 <link type="text/css" rel="stylesheet" href="css/add-language-style.css"/>
 </head>
 <body>
 
 <div id="container">
-<h3>Add Language</h3>
+<h3>Add Page Type</h3>
 
-<form action="LanguagesControllerServlet" method="get">
+<form action="PageTypesControllerServlet" method="get">
   <input type="hidden" name="command" value="ADD" />
   
   <table>
@@ -27,10 +27,11 @@
   </tr>
   
     <tr> 
-  <td><label>Acronym:</label></td>
-  <td><input type="text" name="acronym"></td>
+  <td><label>Metadata:</label></td>
+  <td><input type="text" name="metadata"></td>
   </tr>
-  
+ 
+  <tr>
   <td></td>
   <td><input type="submit" value="Save" class="save"></td>
   </tr>
@@ -43,7 +44,7 @@
 <div style="clear: both;"></div>
 <p> 
 
-<a href="LanguagesControllerServlet">Back</a>
+<a href="PageTypesControllerServlet">Back</a>
 </p>
 
 </div>

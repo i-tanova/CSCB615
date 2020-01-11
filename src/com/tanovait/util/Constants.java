@@ -13,4 +13,5 @@ public class Constants {
 	public static final String PAGE_TYPES = "PAGE_TYPES";
 	public static final String LANGUAGE_ARGUMENT = "language";
 	public static final String PAGE_ARGUMENT = "page";
+	public static final String PAGE_TYPE_ARGUMENT = "pageType";
 }

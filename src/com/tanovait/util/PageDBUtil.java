@@ -229,6 +229,28 @@ public class PageDBUtil {
 		}
 	}
 	
+	public void addPageType(PageType pageType) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = this.dataSource.getConnection();
+
+			String sql = "insert into page_type" + "(name, metadata, lang_id)" + "values(?, ?, ?)";
+			stmt = conn.prepareStatement(sql);
+
+			stmt.setString(1, pageType.getName());
+			stmt.setString(2, pageType.getMetadata());
+			stmt.setInt(3, pageType.getLangId());
+
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(null, stmt, conn);
+		}
+	}
+	
 	public void addPage(Page page) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -363,6 +385,29 @@ public class PageDBUtil {
 
 	}
 	
+	public void updatePageType(PageType pageType) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+
+		try {
+			conn = this.dataSource.getConnection();
+
+			String sql = "update page_type" + " set name=?, metadata=?" + " where id=?";
+			stmt = conn.prepareStatement(sql);
+
+			stmt.setString(1, pageType.getName());
+			stmt.setString(2, pageType.getMetadata());
+			stmt.setInt(3, pageType.getId());
+
+			stmt.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(null, stmt, conn);
+		}
+
+	}
+	
 	public void updatePage(Page page) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -370,7 +415,7 @@ public class PageDBUtil {
 		try {
 			conn = this.dataSource.getConnection();
 
-			String sql = "update page" + " set name=?, theme=?, level_id=?, lang_id=?, page_type_id=?" + " where id=?";
+			String sql = "update page_type" + " set name=?, theme=?, level_id=?, lang_id=?, page_type_id=?" + " where id=?";
 			stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, page.getName());

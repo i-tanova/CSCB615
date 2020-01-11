@@ -37,4 +37,11 @@ public class PageType {
 		this.metadata = metadata;
 		this.langId = langId;
 	}
+	
+	public PageType(String name, String metadata, int langId) {
+		super();
+		this.name = name;
+		this.metadata = metadata;
+		this.langId = langId;
+	}
 }
