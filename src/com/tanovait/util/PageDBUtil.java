@@ -290,7 +290,15 @@ public class PageDBUtil {
 
 		try {
 			conn = this.dataSource.getConnection();
-			String sql = "select * from page where id =" + id;
+			String sql = "SELECT language.id as lang_id, language.name as lang_name, language.acronym as lang_acronym,\n" + 
+					"page.id as page_id, page.name as page_name, page.level_id as level_id, page.theme as page_theme,\n" + 
+					"page.to_date as page_date, page_type.id as page_type_id, page_type.name as page_type_name,\n" + 
+					" page_type.metadata as page_type_metadata, page_type.lang_id as page_type_lang_id\n" + 
+					"FROM page\n" + 
+					"INNER JOIN language ON page.lang_id=language.id\n" + 
+					"INNER JOIN page_type ON page.page_type_id=page_type.id\n" + 
+					"WHERE page.id=" + id + "\n" +
+					"ORDER BY page_name;";
 			stmt = conn.prepareStatement(sql);
 			resSet = stmt.executeQuery();
 
@@ -362,12 +370,15 @@ public class PageDBUtil {
 		try {
 			conn = this.dataSource.getConnection();
 
-//			String sql = "update page" + " set name=?, acronym=?" + " where id=?";
-//			stmt = conn.prepareStatement(sql);
-//
-//			stmt.setString(1, language.getName());
-//			stmt.setString(2, language.getAcronym());
-//			stmt.setInt(3, language.getId());
+			String sql = "update page" + " set name=?, theme=?, level_id=?, lang_id=?, page_type_id=?" + " where id=?";
+			stmt = conn.prepareStatement(sql);
+
+			stmt.setString(1, page.getName());
+			stmt.setString(2, page.getTheme());
+			stmt.setInt(3, page.getLevel_id());
+			stmt.setInt(4, page.getLanguage().getId());
+			stmt.setInt(5, page.getPageType().getId());
+			stmt.setInt(6, page.getId());
 
 			stmt.execute();
 		} catch (SQLException e) {

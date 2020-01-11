@@ -79,7 +79,7 @@ public class LanguagesControllerServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		Language lang = pageDBUtil.loadLanguage(id);
 		
-		request.setAttribute("language", lang);
+		request.setAttribute(Constants.LANGUAGE_ARGUMENT, lang);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/update-language.jsp");
 		try {
 			dispatcher.forward(request, response);

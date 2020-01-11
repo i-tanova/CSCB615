@@ -9,16 +9,14 @@
 <link type="text/css" rel="stylesheet" href="css/style.css"></link>
 </head>
 <body>
-                  <c:url var="addLink" value="PagesControllerServlet">
-						<c:param name="command" value="ADD" />
-					</c:url>
-					
+	<c:url var="addLink" value="PagesControllerServlet">
+		<c:param name="command" value="ADD" />
+	</c:url>
 
-<form action="PagesControllerServlet" method="get">
- <input type="hidden" name="command" value="GO_ADD" />
-	<input type="submit" value="Add page"
-		class="add-student-button">
-	</input>
+
+	<form action="PagesControllerServlet" method="get">
+		<input type="hidden" name="command" value="GO_ADD" /> <input
+			type="submit" value="Add page" class="add-student-button"> </input>
 	</form>
 
 	<div id="wrapper">
@@ -44,26 +42,26 @@
 						<c:param name="command" value="LOAD" />
 						<c:param name="id" value="${temp.id}" />
 					</c:url>
-					
+
 					<c:url var="deleteLink" value="PagesControllerServlet">
 						<c:param name="command" value="DELETE" />
 						<c:param name="id" value="${temp.id}" />
 					</c:url>
-					
+
 					<c:url var="openLanguageLink" value="LanguagesControllerServlet">
 						<c:param name="command" value="LOAD" />
 						<c:param name="id" value="${temp.language.id}" />
 					</c:url>
-					
+
 					<tr>
 						<td>${temp.name}</td>
 						<td>${temp.theme}</td>
-						<td> <a href="${openLanguageLink}">${temp.language.name}</a> </td>
-						<td><a href="${updateLink}">${temp.pageType.name}</a> </td>
+						<td><a href="${openLanguageLink}">${temp.language.name}</a></td>
+						<td><a href="${updateLink}">${temp.pageType.name}</a></td>
 						<td>${temp.date}</td>
-						<td><a href="${updateLink}">Update</a> 
-						| 
-						<a onclick="if(!(confirm('Are you shure?'))) return false" href="${deleteLink}">Delete</a></td>
+						<td><a href="${updateLink}">Update</a> | <a
+							onclick="if(!(confirm('Are you shure?'))) return false"
+							href="${deleteLink}">Delete</a></td>
 					</tr>
 				</c:forEach>
 
@@ -72,11 +70,11 @@
 
 		</div>
 	</div>
-	
-	<p> 
 
-<a href="LanguagesControllerServlet">Languages</a>
-</p>
+	<p>
+
+		<a href="LanguagesControllerServlet">Languages</a>
+	</p>
 
 </body>
 </html>

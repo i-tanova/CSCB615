@@ -102,19 +102,48 @@ public class PagesControllerServlet extends HttpServlet {
 
 
 	private void loadPage(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	    String id = request.getParameter("id");
+	    
+	    Page page = pageDBUtil.loadPage(id);
+	    List<Language> languages = pageDBUtil.getLanguages();
+		List<PageType> pageTypes = pageDBUtil.gePageTypes();
 		
+	    request.setAttribute(Constants.LANGUAGES_ARGUMENT, languages);
+	    request.setAttribute(Constants.PAGE_TYPES, pageTypes);
+	    request.setAttribute(Constants.PAGE_ARGUMENT, page);
+	    
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("/update-page.jsp");
+		try {
+			dispatcher.forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 
 	private void updatePage(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String theme = request.getParameter("theme");
+		String langId = request.getParameter("language");
+		String pageTypeId = request.getParameter("pageType");
 		
+		Language lang = pageDBUtil.loadLanguage(langId);
+		PageType pageType = pageDBUtil.loadPageType(pageTypeId);
+		
+        pageDBUtil.updatePage(new Page(Integer.parseInt(id), lang, pageType, 1, name, theme));
+
+		listPages(request, response);
 	}
 
 
 	private void deletePage(HttpServletRequest request, HttpServletResponse response) {
+		String id = request.getParameter("id");
+		pageDBUtil.deletePage(id);
 		
+		listPages(request, response);
 	}
 
 

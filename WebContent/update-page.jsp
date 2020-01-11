@@ -19,9 +19,9 @@
 
 		<div id="content">
 			<form action="PagesControllerServlet" method="get">
-				<input type="hidden" name="command" value="UPDATE" />
-				<input type="hidden" name="id" value="${page.id}" />
-				
+				<input type="hidden" name="command" value="UPDATE" /> <input
+					type="hidden" name="id" value="${page.id}" />
+
 				<table>
 					<tbody>
 						<tr>
@@ -32,6 +32,29 @@
 						<tr>
 							<td><label>Theme:</label></td>
 							<td><input type="text" name="theme" value="${page.theme}"></td>
+						</tr>
+
+						<tr>
+							<td><label>Language:</label></td>
+							<td><select NAME="language">
+									<c:forEach var="item" items="${LANGUAGES}">
+										<option value="${item.id}"}>
+											<c:out value="${item.name}" />
+										</option>
+									</c:forEach>
+							</select></td>
+						</tr>
+
+
+						<tr>
+							<td><label>Page Type:</label></td>
+							<td><select NAME="pageType">
+									<c:forEach var="item" items="${PAGE_TYPES}">
+										<option value="${item.id}">
+											<c:out value="${item.name}" />
+										</option>
+									</c:forEach>
+							</select></td>
 						</tr>
 
 						<tr>

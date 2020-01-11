@@ -15,6 +15,16 @@ public class Page {
 		this.date = date;
 	}
 	
+	public Page(int id, Language language, PageType pageType, int level_id, String name, String theme) {
+		super();
+		this.id = id;
+		this.language = language;
+		this.pageType = pageType;
+		this.level_id = level_id;
+		this.name = name;
+		this.theme = theme;
+	}
+	
 	public Page(Language language, PageType pageType, int level_id, String name, String theme) {
 		super();
 		this.language = language;
