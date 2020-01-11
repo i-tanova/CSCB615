@@ -17,7 +17,7 @@
 <h3>Add Page</h3>
 
 <form action="PagesControllerServlet" method="get">
-  <input type="hidden" name="COMMAND" value="ADD" />
+  <input type="hidden" name="command" value="ADD" />
   
   <table>
   <tbody>
@@ -31,6 +31,37 @@
   <td><input type="text" name="theme"></td>
   </tr>
   
+  <tr>
+  <td><label>Language:</label></td>
+  <td>
+  
+  <select NAME="language">
+              <c:forEach var="item" items="${LANGUAGES}">
+                <option value="${item.id}" }>
+                  <c:out value="${item.name}" />
+                </option>
+              </c:forEach>
+            </select>
+  
+  </td>
+  </tr>
+  
+  <tr>
+  <td><label>Page Type:</label></td>
+  <td>
+  
+  <select NAME="pageType">
+              <c:forEach var="item" items="${PAGE_TYPES}">
+                <option value="${item.id}" >
+                  <c:out value="${item.name}" />
+                </option>
+              </c:forEach>
+            </select>
+  
+  </td>
+  </tr>
+  
+  <tr>
   <td></td>
   <td><input type="submit" value="Save" class="save"></td>
   </tr>

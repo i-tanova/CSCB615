@@ -95,14 +95,14 @@ public class LanguagesControllerServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String acronym = request.getParameter("acronym");
 		
-		pageDBUtil.update(new Language(Integer.parseInt(id), name, acronym));
+		pageDBUtil.updateLanguage(new Language(Integer.parseInt(id), name, acronym));
 		
 		listLanguages(request, response);
 	}
 
 	private void deleteLanguage(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
-		pageDBUtil.delete(id);
+		pageDBUtil.deleteLanguage(id);
 		
 		listLanguages(request, response);
 	}

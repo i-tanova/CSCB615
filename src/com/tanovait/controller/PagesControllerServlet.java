@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.tanovait.model.Language;
 import com.tanovait.model.Page;
+import com.tanovait.model.PageType;
 import com.tanovait.util.Constants;
 import com.tanovait.util.PageDBUtil;
 
@@ -51,6 +53,10 @@ public class PagesControllerServlet extends HttpServlet {
 			listPages(request, response);
 			break;
 		}
+		case Constants.COMMAND_GO_TO_ADD: {
+			prepareAddPage(request, response);
+			break;
+		}
 		case Constants.COMMAND_ADD: {
 			addPage(request, response);
 			break;
@@ -77,6 +83,23 @@ public class PagesControllerServlet extends HttpServlet {
 		}
 	}
 
+	private void prepareAddPage(HttpServletRequest request, HttpServletResponse response) {
+		List pageTypes = pageDBUtil.gePageTypes();
+		List languages = pageDBUtil.getLanguages();
+		
+		request.setAttribute(Constants.PAGE_TYPES, pageTypes);
+		request.setAttribute(Constants.LANGUAGES_ARGUMENT, languages);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/add-page.jsp");
+		try {
+			dispatcher.forward(request, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	private void loadPage(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
@@ -91,14 +114,23 @@ public class PagesControllerServlet extends HttpServlet {
 
 
 	private void deletePage(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 		
 	}
 
 
 	private void addPage(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		@SuppressWarnings("unused")
+		String name = request.getParameter("name");
+		String theme = request.getParameter("theme");
+		String langId = request.getParameter("language");
+		String pageTypeId = request.getParameter("pageType");
 		
+		Language lang = pageDBUtil.loadLanguage(langId);
+		PageType pageType = pageDBUtil.loadPageType(pageTypeId);
+		
+        pageDBUtil.addPage(new Page(lang, pageType, 1, name, theme));
+
+		listPages(request, response);
 	}
 
 

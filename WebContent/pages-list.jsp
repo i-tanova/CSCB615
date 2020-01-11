@@ -9,11 +9,17 @@
 <link type="text/css" rel="stylesheet" href="css/style.css"></link>
 </head>
 <body>
+                  <c:url var="addLink" value="PagesControllerServlet">
+						<c:param name="command" value="ADD" />
+					</c:url>
+					
 
-	<input type="button" value="Add page"
-		onclick="window.location.href='add-page.jsp'; return false;"
+<form action="PagesControllerServlet" method="get">
+ <input type="hidden" name="command" value="GO_ADD" />
+	<input type="submit" value="Add page"
 		class="add-student-button">
 	</input>
+	</form>
 
 	<div id="wrapper">
 		<div id="header">
