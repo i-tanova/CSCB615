@@ -38,7 +38,8 @@
 							<td><label>Language:</label></td>
 							<td><select NAME="language">
 									<c:forEach var="item" items="${LANGUAGES}">
-										<option value="${item.id}"}>
+										<option value="${item.id}"}
+										${item.id == page.language.id ? 'selected' : ''}>
 											<c:out value="${item.name}" />
 										</option>
 									</c:forEach>
@@ -50,7 +51,8 @@
 							<td><label>Page Type:</label></td>
 							<td><select NAME="pageType">
 									<c:forEach var="item" items="${PAGE_TYPES}">
-										<option value="${item.id}">
+										<option value="${item.id}"
+										 ${item.id == page.pageType.id ? 'selected' : ''}>
 											<c:out value="${item.name}" />
 										</option>
 									</c:forEach>

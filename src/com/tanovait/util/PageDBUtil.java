@@ -415,7 +415,7 @@ public class PageDBUtil {
 		try {
 			conn = this.dataSource.getConnection();
 
-			String sql = "update page_type" + " set name=?, theme=?, level_id=?, lang_id=?, page_type_id=?" + " where id=?";
+			String sql = "update page" + " set name=?, theme=?, level_id=?, lang_id=?, page_type_id=?" + " where id=?";
 			stmt = conn.prepareStatement(sql);
 
 			stmt.setString(1, page.getName());
