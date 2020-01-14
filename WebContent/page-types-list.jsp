@@ -28,6 +28,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Metadata</th>
+					<th>Actions</th>
 				</tr>
 
 				<c:forEach var="temp" items="${PAGE_TYPES}">

@@ -28,6 +28,7 @@
 				<tr>
 					<th>Name</th>
 					<th>Acronym</th>
+					<th>Actions</th>
 				</tr>
 
 				<c:forEach var="temp" items="${LANGUAGES}">

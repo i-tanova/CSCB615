@@ -35,6 +35,7 @@
 					<th>Language</th>
 					<th>Page Type</th>
 					<th>Date Created</th>
+					<th>Action</th>
 				</tr>
 
 				<c:forEach var="temp" items="${PAGES}">
@@ -52,7 +53,7 @@
 						<c:param name="command" value="LOAD" />
 						<c:param name="id" value="${temp.language.id}" />
 					</c:url>
-					
+
 					<c:url var="openPageTypeLink" value="PageTypesControllerServlet">
 						<c:param name="command" value="LOAD" />
 						<c:param name="id" value="${temp.pageType.id}" />
@@ -78,8 +79,8 @@
 
 	<p>
 
-		<a href="LanguagesControllerServlet">Languages</a>
-		<a href="PageTypesControllerServlet">Page Types</a>
+		<a href="LanguagesControllerServlet">Languages</a> <a
+			href="PageTypesControllerServlet">Page Types</a>
 	</p>
 
 </body>

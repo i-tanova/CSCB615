@@ -13,6 +13,12 @@
 </head>
 <body>
 
+<div id="wrapper">
+      <div id="header">
+       <h2>NBU Pages</h2>
+      </div>
+</div>
+
 <div id="container">
 <h3>Add Page</h3>
 
